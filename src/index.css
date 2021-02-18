@@ -1,13 +1,41 @@
+* , *::before , *::after{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.sort-date,
+.filter{
+  display: flex;
+  justify-content: center;
+}
+.sort-date .sort-btn,
+.sort-date span,
+.filter .filter-btn,
+.filter .filter-input{
+  padding: 1em;
+}
+
+.table-view{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.table-view .table-container{
+  width:80vw;
+}
+.table-view h1,
+.table-view table {
+  width:100%;
+
+}
+.table-view td{
+  text-align: center;
 }
