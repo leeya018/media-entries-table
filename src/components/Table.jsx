@@ -1,23 +1,8 @@
 import React from "react";
-import "../index.css";
 
-export default function Table() {
-  let list = [
-    {
-      thumbnail: "jkl",
-      name: "321",
-      entryId: "jk43l",
-      duration: "55",
-      actions: "66",
-    },
-    {
-        thumbnail: "asd",
-        name: "321",
-        entryId: "jk43l",
-        duration: "55",
-        actions: "66",
-      },
-  ];
+
+export default function Table({list}) {
+
   return (
     <div className="table-view">
       <div className="table-container">

@@ -9,7 +9,19 @@ body {
 .app{
   width: 100%;
   display: flex;
+  justify-content:center ;
+  margin:auto;
+
+}
+.login{
+  display: flex;
   flex-direction: column;
+  width: 80%;
+  align-items:center ;
+}
+.login .login-btn{
+  /* width:3.1em;
+  background-color: blue; */
 }
 .sort-date,
 .filter{

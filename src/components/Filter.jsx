@@ -1,10 +1,9 @@
 import React from "react";
-import "../index.css"
 
-export default function Filter() {
+export default function Filter({onChangeFilter}) {
   return (
     <div className="filter">
-      <input type="text" className="filter-input" placeholder="Search for..." />
+      <input type="text" className="filter-input" onChange={(e)=>onChangeFilter(e.target.value)} placeholder="Search for..." />
       <button className="filter-btn">Go!</button>
     </div>
   );
