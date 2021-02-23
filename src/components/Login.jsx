@@ -21,7 +21,7 @@ export default function Login() {
       .loginByLoginId(loginId, password, partnerId, expiry, privileges, otp)
       .execute(client)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
       });
     // console.log(email, password);
   }
@@ -50,3 +50,4 @@ export default function Login() {
     </div>
   );
 }
+// https://www.youtube.com/watch?v=mWJKBNEkJYQ&ab_channel=DeepHouseNation
