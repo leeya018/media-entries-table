@@ -10,6 +10,8 @@ const client = new kaltura.Client(config);
 
 export default function MyEntries() {
   const [list, setList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+
   let [filterTxt, setFilterTxt] = useState("");
   const [orderByDate, setOrderByDate] = useState(true);
 
@@ -38,20 +40,37 @@ export default function MyEntries() {
           .listAction(filter, pager)
           .execute(client)
           .then((result) => {
-            console.log(result);
             let newList = result.objects.map((entry) => {
               return {
                 thumbnailUrl: entry.thumbnailUrl,
                 name: entry.name,
                 id: entry.id,
                 duration: entry.duration,
+                createdAt: entry.createdAt,
               };
             });
+            console.log(newList);
             setList(newList);
           });
       })
       .execute(client);
+  }, []);
+
+  useEffect(() => {
+    let tempList = list
+      .filter((entry) => {
+        return entry.name.includes(filterTxt);
+      })
+      .sort((entryA, entryB) => {
+        if (orderByDate) {
+          return entryA.createdAt - entryB.createdAt;
+        } else {
+          return entryB.createdAt - entryA.createdAt;
+        }
+      });
+    setFilteredList(tempList);
   }, [filterTxt, orderByDate]);
+
   return (
     <div className="container">
       <Filter onChangeFilter={setFilterTxt} />
@@ -59,7 +78,7 @@ export default function MyEntries() {
         OnChangeOrderByDate={setOrderByDate}
         orderByDate={orderByDate}
       />
-      <Table list={list} />
+      <Table list={filteredList} />
     </div>
   );
 }
