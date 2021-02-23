@@ -12,7 +12,7 @@ const client = new kaltura.Client(config);
 export default function MyEntries() {
   const [list, setList] = useState([]);
   let [filterTxt, setFilterTxt] = useState("");
-  const [orderByDate, setOrderByDate] = useState(false)
+  const [orderByDate, setOrderByDate] = useState(true)
 
 
   useEffect(() => {
