@@ -17,7 +17,6 @@ export default function Login() {
   const [alert, setAlert] = useState("");
 
   function login() {
-
     kaltura.services.user
       .loginByLoginId(loginId, password, partnerId, expiry, privileges, otp)
       .execute(client)
@@ -60,4 +59,3 @@ export default function Login() {
     </div>
   );
 }
-// https://www.youtube.com/watch?v=mWJKBNEkJYQ&ab_channel=DeepHouseNation

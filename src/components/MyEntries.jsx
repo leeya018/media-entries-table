@@ -8,17 +8,15 @@ const config = new kaltura.Configuration();
 config.serviceUrl = "https://www.kaltura.com";
 const client = new kaltura.Client(config);
 
-
 export default function MyEntries() {
   const [list, setList] = useState([]);
   let [filterTxt, setFilterTxt] = useState("");
-  const [orderByDate, setOrderByDate] = useState(true)
-
+  const [orderByDate, setOrderByDate] = useState(true);
 
   useEffect(() => {
     kaltura.services.session
       .start(
-        "6652589ed23b9d70c418bba0bc74bcb6",
+        process.env.REACT_APP_SECRET,
         "leeyahav018@gmail.com",
         kaltura.enums.SessionType.ADMIN,
         3219113
@@ -27,9 +25,11 @@ export default function MyEntries() {
         if (!success) throw new Error(ks.message);
         client.setKs(ks);
         let filter = new kaltura.objects.MediaEntryFilter();
-        let {CREATED_AT_DESC,CREATED_AT_ASC} = kaltura.enums.MediaEntryOrderBy
-        filter.orderBy = orderByDate ? CREATED_AT_ASC : CREATED_AT_DESC ;
-        // console.log(kaltura.enums.Me diaEntryOrderBy)
+        let {
+          CREATED_AT_DESC,
+          CREATED_AT_ASC,
+        } = kaltura.enums.MediaEntryOrderBy;
+        filter.orderBy = orderByDate ? CREATED_AT_ASC : CREATED_AT_DESC;
         filter.freeText = filterTxt;
         let pager = new kaltura.objects.FilterPager();
 
@@ -50,12 +50,15 @@ export default function MyEntries() {
           });
       })
       .execute(client);
-  }, [filterTxt,orderByDate]);
+  }, [filterTxt, orderByDate]);
   return (
     <div className="container">
       <Filter onChangeFilter={setFilterTxt} />
-      <SortDate OnChangeOrderByDate={setOrderByDate} orderByDate={orderByDate}/>
-      <Table list={list}/>
+      <SortDate
+        OnChangeOrderByDate={setOrderByDate}
+        orderByDate={orderByDate}
+      />
+      <Table list={list} />
     </div>
   );
 }
