@@ -29,7 +29,10 @@ export default function Table({ list }) {
               return (
                 <tr key={item.id}>
                   <td>
-                    <div className="img" style={getImageStyle(item.thumbnailUrl)}></div>
+                    <div
+                      className="img"
+                      style={getImageStyle(item.thumbnailUrl)}
+                    ></div>
                   </td>
                   <td>{item.name}</td>
                   <td>{item.id}</td>
