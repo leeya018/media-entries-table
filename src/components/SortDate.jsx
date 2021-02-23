@@ -5,7 +5,7 @@ import keyupIcon from "../images/keyup.png";
 export default function SortDate({ OnChangeOrderByDate, orderByDate }) {
   function getImageStyle() {
     return {
-      backgroundImage: `url(${orderByDate ? keydownIcon : keyupIcon})`,
+      backgroundImage: `url(${orderByDate ?  keyupIcon:keydownIcon})`,
       width: "2em",
       height: "2em",
       backgroundSize: "contain",

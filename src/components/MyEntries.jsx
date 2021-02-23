@@ -31,8 +31,9 @@ export default function MyEntries() {
         } = kaltura.enums.MediaEntryOrderBy;
         filter.orderBy = orderByDate ? CREATED_AT_ASC : CREATED_AT_DESC;
         filter.freeText = filterTxt;
-        let pager = new kaltura.objects.FilterPager();
 
+        let pager = new kaltura.objects.FilterPager();
+        pager.pageSize = 20;
         kaltura.services.media
           .listAction(filter, pager)
           .execute(client)
