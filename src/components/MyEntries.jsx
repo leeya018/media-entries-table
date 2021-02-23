@@ -29,7 +29,7 @@ export default function MyEntries() {
         let filter = new kaltura.objects.MediaEntryFilter();
         let {CREATED_AT_DESC,CREATED_AT_ASC} = kaltura.enums.MediaEntryOrderBy
         filter.orderBy = orderByDate ? CREATED_AT_ASC : CREATED_AT_DESC ;
-        console.log(kaltura.enums.MediaEntryOrderBy)
+        // console.log(kaltura.enums.Me diaEntryOrderBy)
         filter.freeText = filterTxt;
         let pager = new kaltura.objects.FilterPager();
 
@@ -37,7 +37,7 @@ export default function MyEntries() {
           .listAction(filter, pager)
           .execute(client)
           .then((result) => {
-            // console.log(result);
+            console.log(result);
             let newList = result.objects.map((entry) => {
               return {
                 thumbnailUrl: entry.thumbnailUrl,

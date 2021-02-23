@@ -17,8 +17,27 @@ body {
 .login {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 50%;
   align-items: center;
+}
+.login input{
+  width: 100%;
+  height: 3em;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+.login .alert{
+  color:red;
+}
+.login button{
+  width: 100%;
+  height: 3em;
+  background-color: rgb(45, 118, 182);
+  border-radius: 5px;
+  
+}
+.login button:hover{
+  background-color: #2b87c5
 }
 .container {
   width: 80%;
@@ -61,6 +80,10 @@ td,
 th {
   border-bottom: 1pt solid black;
 }
+table,
+.table-container{
+  width:100%;
+}
 .table-container .delete-btn {
   border-radius: 3.5px;
   height: 2.3em;
@@ -68,35 +91,3 @@ th {
   background-color: #c82333;
   color: white;
 }
-/* .login .login-btn{ */
-/* width:3.1em;
-  background-color: blue; */
-/* } */
-/* .sort-date,
-.filter{
-  display: flex;
-  justify-content: center;
-}
-/* .sort-date .sort-btn,
-.sort-date span,
-.filter .filter-btn,
-.filter .filter-input{
-  padding: 1em;
-}
-
-.table-view{
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-.table-view .table-container{
-  width:80vw;
-}
-.table-view h1,
-.table-view table {
-  width:100%;
-
-}
-.table-view td{
-  text-align: center;
-} */

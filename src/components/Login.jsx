@@ -1,5 +1,5 @@
 import kaltura from "kaltura-client";
-
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 const config = new kaltura.Configuration();
 config.serviceUrl = "https://www.kaltura.com";
@@ -11,27 +11,35 @@ let privileges = "*";
 let otp = "";
 
 export default function Login() {
+  const history = useHistory();
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState("");
 
   function login() {
-    // let loginId = "leeyahav018@gmail.com";
-    // let password = "eLy3gptre4#"
+
     kaltura.services.user
       .loginByLoginId(loginId, password, partnerId, expiry, privileges, otp)
       .execute(client)
       .then((result) => {
-        // console.log(result);
+        console.log(result);
+        history.push("/media-entries");
+      })
+      .catch((e) => {
+        console.log(e.message);
+        setAlert(e.message);
       });
+
     // console.log(email, password);
   }
   return (
     <div className="login">
-        <h1>Login</h1>
+      <h1>Login</h1>
       <input
         className="email-input"
         placeholder="email"
         onChange={(e) => {
+          setAlert("");
           setLoginId(e.target.value);
         }}
         type="text"
@@ -40,6 +48,7 @@ export default function Login() {
         className="password-input"
         placeholder="password"
         onChange={(e) => {
+          setAlert("");
           setPassword(e.target.value);
         }}
         type="text"
@@ -47,6 +56,7 @@ export default function Login() {
       <button className="login-btn" onClick={login}>
         login
       </button>
+      <p className="alert">{alert}</p>
     </div>
   );
 }
