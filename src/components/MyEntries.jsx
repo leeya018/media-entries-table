@@ -21,7 +21,7 @@ export default function MyEntries() {
         process.env.REACT_APP_SECRET,
         "leeyahav018@gmail.com",
         kaltura.enums.SessionType.ADMIN,
-        3219113
+        "*****"
       )
       .completion((success, ks) => {
         if (!success) throw new Error(ks.message);
